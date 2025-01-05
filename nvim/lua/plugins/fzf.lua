@@ -82,9 +82,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			fzf.grep({
 				search = "",
 				path_shorten = true,
-				winopts = {
-					preview = { hidden = true },
-				},
 			})
 		end, { desc = "[/] Fuzzily search in current buffer" })
 

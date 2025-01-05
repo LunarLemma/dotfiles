@@ -106,8 +106,19 @@ return {
 					preferIncrementalParsing = true,
 				},
 			},
+			clangd = { -- Adding clangd for C++
+				cmd = { "clangd" },
+				filetypes = { "c", "cpp", "objc", "objcpp" },
+				root_dir = require("lspconfig").util.root_pattern("compile_commands.json", ".git"),
+				settings = {
+					clangd = {
+						completion = { enable = true },
+						diagnostics = { enable = true },
+						-- Add more clangd-specific settings if needed
+					},
+				},
+			},
 		}
-
 		-- Ensure language servers are installed
 		require("mason").setup()
 		require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers) })
@@ -115,11 +126,9 @@ return {
 			ensure_installed = vim.tbl_keys(servers),
 			handlers = {
 				function(server_name)
-					require("lspconfig")[server_name].setup(vim.tbl_deep_extend(
-						"force",
-						{ capabilities = capabilities },
-						servers[server_name] or {}
-					))
+					require("lspconfig")[server_name].setup(
+						vim.tbl_deep_extend("force", { capabilities = capabilities }, servers[server_name] or {})
+					)
 				end,
 			},
 		})

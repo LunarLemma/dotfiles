@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy and plugins
 require("lazy").setup({
 	-- NOTE: Following plugins are user interface imports
-	-- "tpope/vim-sleuth", -- auto adjust tabstop and shiftwidth based on file
+	"tpope/vim-sleuth", -- auto adjust tabstop and shiftwidth based on file
 	require("plugins.gitsigns"), -- add git signs, gutters, blame etc
 	-- require("plugins.telescope"), -- fuzzy finder for files, buffers, grep etc
 	require("plugins.which-key"),
@@ -36,10 +36,15 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.autopairs"),
 	require("plugins.lazygit"),
-	require("plugins.tabs"),
+	require("plugins.toggleterm"),
+	require("plugins.mutli_cursor"),
+	-- require("plugins.tabs"),
 	-- NOTE: UI and quality of life for IDE
+	require("interface.lualine"),
+	require("interface.bufferline"),
 	require("interface.mini"),
-	require("interface.tokyonight"),
+	-- require("interface.tokyonight"),
+	require('interface.catppuccin'),
 	require("interface.nvim-treesitter"),
 	{
 		"folke/todo-comments.nvim",
