@@ -14,7 +14,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		fzf.setup({
 			winopts = {
 				height = 0.85, -- Window height (percent)
-				width = 0.80,  -- Window width (percent)
+				width = 0.80, -- Window width (percent)
 				preview = {
 					default = "bat", -- Use 'bat' for syntax highlighting (requires bat installed)
 					horizontal = "right:50%", -- Horizontal split for preview
@@ -79,12 +79,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
 		-- Additional functionality for in-buffer search
 		map("n", "<leader>/", function()
-			fzf.grep({
-				search = "",
-				path_shorten = true,
+			fzf.grep_curbuf({
+				prompt = "Search in current buffer > ",
+				search = "", -- Optional: start with an empty query
 			})
 		end, { desc = "[/] Fuzzily search in current buffer" })
-
 		-- Grep open files only
 		map("n", "<leader>s/", function()
 			fzf.live_grep({
